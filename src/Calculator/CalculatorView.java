@@ -1,6 +1,7 @@
 package Calculator;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class CalculatorView extends JFrame {
@@ -16,6 +17,7 @@ public class CalculatorView extends JFrame {
     private JLabel setSignLabel;
     private JLabel totalLabel;
     private JButton piButton;
+    private JLabel errorLabel;
     private CalculatorPresenter presenter;
     private ActionListener actionListener;
 
@@ -24,67 +26,67 @@ public class CalculatorView extends JFrame {
         super("Calculator");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(mainPanel);
-        setSize(500, 300);
+        setSize(550, 350);
         setVisible(true);
 
+            divisionButton.addActionListener(e -> {
+                if (!inputTextField2.equals("π") && !inputTextField1.equals("π")) {
+                    presenter.division(Double.parseDouble(inputTextField1.getText()), Double.parseDouble(inputTextField2.getText()));
+                } else if (inputTextField1.equals("π")) {
+                    presenter.division(3.14, Double.parseDouble(inputTextField2.getText()));
+                } else if (inputTextField2.equals("π")) {
+                    presenter.division(Double.parseDouble(inputTextField1.getText()), 3.14);
+                } else {
+                    presenter.division(3.14, 3.14);
 
-        divisionButton.addActionListener(e -> {
-            if (!inputTextField2.equals("π") && !inputTextField1.equals("π")) {
-                presenter.division(Double.parseDouble(inputTextField1.getText()), Double.parseDouble(inputTextField2.getText()));
-            } else if (inputTextField1.equals("π")) {
-                presenter.division(3.14, Double.parseDouble(inputTextField2.getText()));
-            } else if (inputTextField2.equals("π")) {
-                presenter.division(Double.parseDouble(inputTextField1.getText()), 3.14);
-            } else {
-                presenter.division(3.14, 3.14);
+                }
+            });
 
-            }
-        });
+            multiplicateButton.addActionListener(e -> {
+                if (!inputTextField2.equals("π") && !inputTextField1.equals("π")) {
+                    presenter.multiplication(Double.parseDouble(inputTextField1.getText()), Double.parseDouble(inputTextField2.getText()));
+                } else if (inputTextField1.equals("π")) {
+                    presenter.multiplication(3.14, Double.parseDouble(inputTextField2.getText()));
+                } else if (inputTextField2.equals("π")) {
+                    presenter.multiplication(Double.parseDouble(inputTextField1.getText()), 3.14);
+                } else {
+                    presenter.multiplication(3.14, 3.14);
 
-        multiplicateButton.addActionListener(e -> {
-            if (!inputTextField2.equals("π") && !inputTextField1.equals("π")) {
-                presenter.multiplication(Double.parseDouble(inputTextField1.getText()), Double.parseDouble(inputTextField2.getText()));
-            } else if (inputTextField1.equals("π")) {
-                presenter.multiplication(3.14, Double.parseDouble(inputTextField2.getText()));
-            } else if (inputTextField2.equals("π")) {
-                presenter.multiplication(Double.parseDouble(inputTextField1.getText()), 3.14);
-            } else {
-                presenter.multiplication(3.14, 3.14);
+                }
+            });
+            plusButton.addActionListener(e -> {
+                if (!inputTextField2.equals("π") && !inputTextField1.equals("π")) {
+                    presenter.plus(Double.parseDouble(inputTextField1.getText()), Double.parseDouble(inputTextField2.getText()));
+                } else if (inputTextField1.equals("π")) {
+                    presenter.plus(3.14, Double.parseDouble(inputTextField2.getText()));
+                } else if (inputTextField2.equals("π")) {
+                    presenter.plus(Double.parseDouble(inputTextField1.getText()), 3.14);
+                } else {
+                    presenter.plus(3.14, 3.14);
 
-            }
-        });
-        plusButton.addActionListener(e -> {
-            if (!inputTextField2.equals("π") && !inputTextField1.equals("π")) {
-                presenter.plus(Double.parseDouble(inputTextField1.getText()), Double.parseDouble(inputTextField2.getText()));
-            } else if (inputTextField1.equals("π")) {
-                presenter.plus(3.14, Double.parseDouble(inputTextField2.getText()));
-            } else if (inputTextField2.equals("π")) {
-                presenter.plus(Double.parseDouble(inputTextField1.getText()), 3.14);
-            } else {
-                presenter.plus(3.14, 3.14);
+                }
+            });
+            minusButton.addActionListener(e -> {
+                if (!inputTextField2.equals("π") && !inputTextField1.equals("π")) {
+                    presenter.minus(Double.parseDouble(inputTextField1.getText()), Double.parseDouble(inputTextField2.getText()));
+                } else if (inputTextField1.equals("π")) {
+                    presenter.minus(3.14, Double.parseDouble(inputTextField2.getText()));
+                } else if (inputTextField2.equals("π")) {
+                    presenter.minus(Double.parseDouble(inputTextField1.getText()), 3.14);
+                } else {
+                    presenter.minus(3.14, 3.14);
 
-            }
-        });
-        minusButton.addActionListener(e -> {
-            if (!inputTextField2.equals("π") && !inputTextField1.equals("π")) {
-                presenter.minus(Double.parseDouble(inputTextField1.getText()), Double.parseDouble(inputTextField2.getText()));
-            } else if (inputTextField1.equals("π")) {
-                presenter.minus(3.14, Double.parseDouble(inputTextField2.getText()));
-            } else if (inputTextField2.equals("π")) {
-                presenter.minus(Double.parseDouble(inputTextField1.getText()), 3.14);
-            } else {
-                presenter.minus(3.14, 3.14);
+                }
+            });
+            piButton.addActionListener(e -> {
+                if (inputTextField1.isFocusOwner()) {
+                    inputTextField1.setText("π");
+                }
+                if (inputTextField2.isFocusOwner()) {
+                    inputTextField2.setText("π");
+                }
+            });
 
-            }
-        });
-        piButton.addActionListener(e -> {
-            if (inputTextField1.isEnabled()) {
-                inputTextField1.setText("π");
-            }
-            if (inputTextField2.isEnabled()) {
-                inputTextField2.setText("π");
-            }
-        });
     }
 
     public void setPresenter(CalculatorPresenter presenter) {
@@ -97,6 +99,9 @@ public class CalculatorView extends JFrame {
 
     public void setTotalLabel(double resultat) {
         totalLabel.setText(String.valueOf(resultat));
+    }
+    public void setErrorLabel(String text){
+        errorLabel.setText(text);
     }
 
 }
