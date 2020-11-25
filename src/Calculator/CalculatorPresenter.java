@@ -3,8 +3,6 @@ package Calculator;
 public class CalculatorPresenter {
 
     private CalculatorView view;
-    private double total = 0;
-
 
     public CalculatorPresenter(CalculatorView view) {
         this.view = view;

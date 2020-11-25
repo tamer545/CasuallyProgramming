@@ -41,8 +41,10 @@ public class CalculatorView extends JFrame {
         super("Calculator");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(mainPanel);
-        setSize(550, 350);
+        setSize(650, 450);
         setVisible(true);
+
+        inputTextField1.requestFocus();
 
         divisionButton.addActionListener(e -> {
             presenter.division(Double.parseDouble(inputTextField1.getText()), Double.parseDouble(inputTextField2.getText()));
@@ -133,7 +135,6 @@ public class CalculatorView extends JFrame {
         });
     }
 
-
     public void setPresenter(CalculatorPresenter presenter) {
         this.presenter = presenter;
     }
@@ -144,10 +145,6 @@ public class CalculatorView extends JFrame {
 
     public void setTotalLabel(double resultat) {
         totalLabel.setText(String.valueOf(resultat));
-    }
-
-    public void setErrorLabel(String text) {
-        errorLabel.setText(text);
     }
 
     public void clearAll() {
@@ -165,7 +162,7 @@ public class CalculatorView extends JFrame {
         if (textField1isFocused) {
             textField1String += number;
 
-        } else {
+        } else if (textField2isFocused) {
             textField2String += number;
         }
         inputTextField1.setText(textField1String);
