@@ -1,6 +1,7 @@
 package Calculator;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class CalculatorView extends JFrame {
@@ -38,10 +39,11 @@ public class CalculatorView extends JFrame {
 
 
     public CalculatorView() {
-        super("Calculator");
+        setUndecorated(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(mainPanel);
         setSize(650, 450);
+        setLocationRelativeTo(null);
         setVisible(true);
 
         inputTextField1.requestFocus();
@@ -132,6 +134,12 @@ public class CalculatorView extends JFrame {
                     inputTextField1.requestFocus();
                 }
             }
+        });
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
+            if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                dispose();
+            }
+            return false;
         });
     }
 
