@@ -62,125 +62,38 @@ public class CalculatorView extends JFrame {
         });
 
         pointButton.addActionListener(e -> {
-            clearTotalField();
-            if (textField1isFocused) {
-                textField1String += ".";
-
-            } else {
-                textField2String += ".";
-            }
-            inputTextField1.setText(textField1String);
-            inputTextField2.setText(textField2String);
+            appendNumber(".");
         });
         a0Button.addActionListener(e -> {
-            clearTotalField();
-            if (textField1isFocused) {
-                textField1String += "0";
-
-            } else {
-                textField2String += "0";
-            }
-            inputTextField1.setText(textField1String);
-            inputTextField2.setText(textField2String);
+            appendNumber("0");
         });
         a1Button.addActionListener(e -> {
-            clearTotalField();
-            if (textField1isFocused) {
-                textField1String += "1";
-
-            } else {
-                textField2String += "1";
-            }
-            inputTextField1.setText(textField1String);
-            inputTextField2.setText(textField2String);
+            appendNumber("1");
         });
         a2Button.addActionListener(e -> {
-            clearTotalField();
-            if (textField1isFocused) {
-                textField1String += "2";
-
-            } else {
-                textField2String += "2";
-            }
-            inputTextField1.setText(textField1String);
-            inputTextField2.setText(textField2String);
+            appendNumber("2");
         });
         a3Button.addActionListener(e -> {
-            clearTotalField();
-            if (textField1isFocused) {
-                textField1String += "3";
-
-            } else {
-                textField2String += "3";
-            }
-            inputTextField1.setText(textField1String);
-            inputTextField2.setText(textField2String);
+            appendNumber("3");
         });
         a4Button.addActionListener(e -> {
-            clearTotalField();
-            if (textField1isFocused) {
-                textField1String += "4";
-
-            } else {
-                textField2String += "4";
-            }
-            inputTextField1.setText(textField1String);
-            inputTextField2.setText(textField2String);
+            appendNumber("4");
         });
         a5Button.addActionListener(e -> {
-            clearTotalField();
-            if (textField1isFocused) {
-                textField1String += "5";
-
-            } else {
-                textField2String += "5";
-            }
-            inputTextField1.setText(textField1String);
-            inputTextField2.setText(textField2String);
+            appendNumber("5");
         });
         a6Button.addActionListener(e -> {
-            clearTotalField();
-            if (textField1isFocused) {
-                textField1String += "6";
-
-            } else {
-                textField2String += "6";
-            }
-            inputTextField1.setText(textField1String);
-            inputTextField2.setText(textField2String);
+            appendNumber("6");
         });
         a7Button.addActionListener(e -> {
-            clearTotalField();
-            if (textField1isFocused) {
-                textField1String += "7";
-
-            } else {
-                textField2String += "7";
-            }
-            inputTextField1.setText(textField1String);
-            inputTextField2.setText(textField2String);
+            appendNumber("7");
         });
         a8Button.addActionListener(e -> {
-            clearTotalField();
-            if (textField1isFocused) {
-                textField1String += "8";
+            appendNumber("8");
 
-            } else {
-                textField2String += "8";
-            }
-            inputTextField1.setText(textField1String);
-            inputTextField2.setText(textField2String);
         });
         a9Button.addActionListener(e -> {
-            clearTotalField();
-            if (textField1isFocused) {
-                textField1String += "9";
-
-            } else {
-                textField2String += "9";
-            }
-            inputTextField1.setText(textField1String);
-            inputTextField2.setText(textField2String);
+            appendNumber("9");
         });
 
 
@@ -245,6 +158,18 @@ public class CalculatorView extends JFrame {
 
     public void clearTotalField() {
         totalLabel.setText("");
+    }
+
+    private void appendNumber(String number) {
+        clearTotalField();
+        if (textField1isFocused) {
+            textField1String += number;
+
+        } else {
+            textField2String += number;
+        }
+        inputTextField1.setText(textField1String);
+        inputTextField2.setText(textField2String);
     }
 
 }
