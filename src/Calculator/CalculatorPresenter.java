@@ -32,6 +32,11 @@ public class CalculatorPresenter {
         total = number1 - number2;
         setTotal();
     }
+    public void modulo(double number1, double number2){
+        view.setSign("%");
+        total = number1 % number2;
+        setTotal();
+    }
     public void setTotal(){
         view.setTotalLabel(total);
     }
