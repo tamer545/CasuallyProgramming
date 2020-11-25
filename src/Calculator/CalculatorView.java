@@ -36,6 +36,8 @@ public class CalculatorView extends JFrame {
     private boolean textField2isFocused = false;
     private String textField1String = "";
     private String textField2String = "";
+    private int posX = 0;
+    private int posY = 0;
 
 
     public CalculatorView() {
@@ -45,6 +47,19 @@ public class CalculatorView extends JFrame {
         setSize(650, 450);
         setLocationRelativeTo(null);
         setVisible(true);
+
+        this.addMouseMotionListener(new MouseAdapter() {
+            public void mouseDragged(MouseEvent evt) {
+                //sets frame position when mouse dragged
+                setLocation(evt.getXOnScreen() - posX, evt.getYOnScreen() - posY);
+
+            }
+
+            public void mousePressed(MouseEvent e) {
+                posX = e.getX();
+                posY = e.getY();
+            }
+        });
 
         inputTextField1.requestFocus();
 
@@ -157,7 +172,9 @@ public class CalculatorView extends JFrame {
 
     public void clearAll() {
         inputTextField1.setText("");
+        textField1String = "";
         inputTextField2.setText("");
+        textField2String = "";
         totalLabel.setText("");
     }
 
