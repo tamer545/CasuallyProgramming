@@ -16,7 +16,6 @@ public class CalculatorView extends JFrame {
     private JTextField inputTextField2;
     private JLabel setSignLabel;
     private JLabel totalLabel;
-    private JLabel errorLabel;
     private JButton a9Button;
     private JButton a8Button;
     private JButton a7Button;
@@ -42,11 +41,17 @@ public class CalculatorView extends JFrame {
 
     public CalculatorView() {
         setUndecorated(true);
+        settingButtons();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(mainPanel);
-        setSize(650, 450);
+        setSize(950, 600);
         setLocationRelativeTo(null);
         setVisible(true);
+
+        pointButton.setBorderPainted(false);
+        pointButton.setContentAreaFilled(false);
+        pointButton.setOpaque(true);
+
 
         this.addMouseMotionListener(new MouseAdapter() {
             public void mouseDragged(MouseEvent evt) {
@@ -65,6 +70,7 @@ public class CalculatorView extends JFrame {
 
         divisionButton.addActionListener(e -> {
             presenter.division(Double.parseDouble(inputTextField1.getText()), Double.parseDouble(inputTextField2.getText()));
+
         });
 
         multiplicateButton.addActionListener(e -> {
@@ -82,6 +88,7 @@ public class CalculatorView extends JFrame {
 
         pointButton.addActionListener(e -> {
             appendNumber(".");
+
         });
         a0Button.addActionListener(e -> {
             appendNumber("0");
@@ -192,6 +199,52 @@ public class CalculatorView extends JFrame {
         }
         inputTextField1.setText(textField1String);
         inputTextField2.setText(textField2String);
+    }
+    private void settingButtons(){
+
+        Image clearButtonIcon = new ImageIcon("ClearButtonImage.png").getImage();
+        Image pointButtonIcon = new ImageIcon("pointButtonImage.png").getImage();
+        Image zeroButtonIcon = new ImageIcon("0ButtonImage.png").getImage();
+        Image oneButtonIcon = new ImageIcon("1ButtonImage.png").getImage();
+        Image twoButtonIcon = new ImageIcon("2ButtonImage.png").getImage();
+        Image threeButtonIcon = new ImageIcon("3ButtonImage.png").getImage();
+        Image fourButtonIcon = new ImageIcon("4ButtonImage.png").getImage();
+        Image fiveButtonIcon = new ImageIcon("5ButtonImage.png").getImage();
+        Image sixButtonIcon = new ImageIcon("6ButtonImage.png").getImage();
+        Image sevenButtonIcon = new ImageIcon("7ButtonImage.png").getImage();
+        Image eightButtonIcon = new ImageIcon("8ButtonImage.png").getImage();
+        Image nineButtonIcon = new ImageIcon("9ButtonImage.png").getImage();
+        Image divisionButtonIcon = new ImageIcon("divisionButtonImage.png").getImage();
+        Image multiplicationButtonIcon = new ImageIcon("multiplicationButtonImage.png").getImage();
+        Image subtractionButtonIcon = new ImageIcon("subtractionButtonImage.png").getImage();
+        Image additionButtonIcon = new ImageIcon("additionButtonImage.png").getImage();
+        Image moduloButtonIcon = new ImageIcon("moduloButtonImage.png").getImage();
+
+        setButton(clearButton, clearButtonIcon);
+        setButton(pointButton, pointButtonIcon);
+        setButton(a0Button, zeroButtonIcon);
+        setButton(a1Button, oneButtonIcon);
+        setButton(a2Button, twoButtonIcon);
+        setButton(a3Button, threeButtonIcon);
+        setButton(a4Button, fourButtonIcon);
+        setButton(a5Button, fiveButtonIcon);
+        setButton(a6Button, sixButtonIcon);
+        setButton(a7Button, sevenButtonIcon);
+        setButton(a8Button, eightButtonIcon);
+        setButton(a9Button, nineButtonIcon);
+        setButton(divisionButton, divisionButtonIcon);
+        setButton(multiplicateButton, multiplicationButtonIcon);
+        setButton(minusButton, subtractionButtonIcon);
+        setButton(plusButton, additionButtonIcon);
+        setButton(moduloButton, moduloButtonIcon);
+
+    }
+    public void setButton(JButton button, Image icon){
+        button.setIcon(new ImageIcon(icon));
+        button.setBorderPainted(false);
+        button.setContentAreaFilled(false);
+        button.setFocusPainted(false);
+
     }
 
 }
